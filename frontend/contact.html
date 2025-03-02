@@ -6,12 +6,13 @@
     <title>Shop</title>
     
     <!-- Link to external CSS and Google Fonts -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+    <!-- Header Section -->
     <section id="header">
         <a href="index.html"><img src="images/logo.png" alt="The Mount Man Logo" class="logo"></a>
         <div>
@@ -20,8 +21,8 @@
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">contact</a></li>
-                <li id="lg-bag"><a class="active"  href="cart.html"><i class="fas fa-shopping-bag"></i></a></li>
+                <li><a class="active" href="contact.html">contact</a></li>
+                <li id="lg-bag"><a href="cart.html"><i class="fas fa-shopping-bag"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
             </ul>
         </div>
@@ -36,76 +37,59 @@
         <p>LEAVE A MESSAGE, We love to hear from you</p>
     </section>
 
-
-    <section id="cart" class="section-p1">
-        <table width="100%">
-            <thead>
-                <tr>
-                    <td>Remove</td>
-                    <td>images</td>
-                    <td>Product</td>
-                    <td>Price</td>
-                    <td>Quantity</td>
-                    <td>Subtotal</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href="#"><i class="fa-solid fa-circle-xmark"></i></a></td>
-                    <td><img src="images/product/f4.jpg" alt=""></td>
-                    <td>Cartoon astronanut t-shirt</td>
-                    <td>₹120</td>
-                    <td><input type="number" value="1"></td>
-                    <td>₹360</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class="fa-solid fa-circle-xmark"></i></a></td>
-                    <td><img src="images/product/f5.jpg" alt=""></td>
-                    <td>Cartoon astronanut t-shirt</td>
-                    <td>₹120</td>
-                    <td><input type="number" value="1"></td>
-                    <td>₹360</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class="fa-solid fa-circle-xmark"></i></a></td>
-                    <td><img src="images/product/f6.jpg" alt=""></td>
-                    <td>Cartoon astronanut t-shirt</td>
-                    <td>₹120</td>
-                    <td><input type="number" value="1"></td>
-                    <td>₹360</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section id="cart-add" class="section-p1">
-        <div id="coupen">
-            <h3>Apply Coupen</h3>
+    <section id="contact-details" class="section-p1">
+        <div class="details">
+            <span>Get In Touch</span>
+            <h2>Visit one od our agency location or contact us today</h2>
+            <h3>Head Office</h3>
             <div>
-                <input type="text " placeholder="Enter the Coupen">
-                <button class="normal">Apply</button>
+                <li>
+                    <i class="fal fa-map"></i>
+                    <p>Joga Bai Extn Jamia Nagar OKhla</p>
+                </li>
+                <li>
+                    <i class="fal fa-envelope"></i>
+                    <p>@gmail.com</p>
+                </li>
+                <li>
+                    <i class="fal fa-phone-alt"></i>
+                    <p>9540XXXXXX</p>
+                </li>
+                <li>
+                    <i class="fal fa-clock"></i>
+                    <p>Monday to Saturday: 9:00am to 16:00 pm</p>
+                </li>
             </div>
         </div>
 
-        <div id="subtotal">
-            <h3>Cart Total</h3>
-            <table>
-                <tr>
-                    <td>Cart Subtotal</td>
-                    <td>₹360</td>
-                </tr>
-                <tr>
-                    <td>shipping</td>
-                    <td>Free</td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong>₹360</strong></td>
-                </tr>
-            </table>
-            <button class="normal">Proced to checkout</button>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d218.99700656043404!2d77.2859273!3d28.5712009!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce38818c34e63%3A0x92eeec86629a329!2sF-54%2C%20Block%20S%2C%20Jogabai%20Extension%2C%20Jamia%20Nagar%2C%20Okhla%2C%20New%20Delhi%2C%20Delhi%20110025!5e0!3m2!1sen!2sin!4v1739742301340!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
+    </section><br><br><hr><br><br>
+
+
+    <section id="form-details">
+        <form action="">
+            <span>Leave A MESSAGE</span>
+            <h2>We love to hear from you</h2>
+            <input type="text" placeholder="Your Name">
+            <input type="text" placeholder="E-mail">
+            <input type="text" placeholder="Subject">
+            <textarea name="" id="" placeholder="Your Message"></textarea>
+            <button class="normal" type="submit">submit</button>
+        </form>
     </section>
 
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign up for news letter</h4>
+            <p>get E-mail updates about our latest shop and <span>special offer.</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Yor E-mail Address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
 
     <footer class="section-p1">
         <div class="col">
@@ -158,6 +142,6 @@
     </footer>
     
     <!-- JavaScript -->
-    <script src="mount.js"></script>
+    <script src="js/mount.js"></script>
 </body>
 </html>

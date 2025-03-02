@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Panel</title>
+  <script defer src="admin-dashboard.js"></script>
+</head>
+<body>
+  <h2>Admin Product Management</h2>
+  
+  <form id="productForm">
+    <input type="text" id="name" placeholder="Product Name" required>
+    <input type="number" id="price" placeholder="Price" required>
+    <input type="text" id="image" placeholder="Image URL" required>
+    <textarea id="description" placeholder="Description" required></textarea>
+    <button type="submit">Add Product</button>
+  </form>
+
+  <h3>Product List</h3>
+  <div id="adminProducts"></div>
+</body>
+</html>
