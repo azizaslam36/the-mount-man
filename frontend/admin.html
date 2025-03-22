@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h2>Welcome to Admin Panel</h2>
+    <button onclick="logout()">Logout</button>
+
+    <h3>Add Product</h3>
+    <form id="productForm">
+        <input type="text" id="name" placeholder="Product Name" required><br>
+        <input type="text" id="brand" placeholder="Brand"><br>
+        <input type="number" id="price" placeholder="Price" required><br>
+        <input type="text" id="image" placeholder="Image URL" required><br>
+        <button type="submit">Add Product</button>
+    </form>
+
+    <script>
+        async function logout() {
+            let response = await fetch("http://127.0.0.1:5000/api/admin/logout");
+            let result = await response.json();
+            alert(result.message);
+            window.location.href = result.redirect;
+        }
+
+        document.getElementById("productForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            let productData = {
+                name: document.getElementById("name").value,
+                brand: document.getElementById("brand").value,
+                price: document.getElementById("price").value,
+                image: document.getElementById("image").value
+            };
+
+            let response = await fetch("http://127.0.0.1:5000/api/products/add", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(productData)
+            });
+
+            let result = await response.json();
+            alert(result.message);
+        });
+    </script>
+</body>
+</html>
+

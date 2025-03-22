@@ -352,6 +352,38 @@
     <!-- JavaScript -->
     <script src="js/products.js"></script>
     <script src="js/mount.js"></script>
+    <script>
+        async function loadProducts() {
+            try {
+                let response = await fetch("http://127.0.0.1:5000/api/products");
+                let products = await response.json();
+    
+                let productContainer = document.querySelector(".product-container");
+                productContainer.innerHTML = ""; // Clear existing content
+    
+                products.forEach(product => {
+                    let productHTML = `
+                        <div class="product" onclick="window.location.href='sproduct.html';">
+                            <img src="${product.image}" alt="${product.name}">
+                            <div class="description">
+                                <span>${product.brand || 'Brand'}</span>
+                                <h5>${product.name}</h5>
+                                <h4>₹${product.price}</h4>
+                            </div>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    `;
+                    productContainer.innerHTML += productHTML;
+                });
+            } catch (error) {
+                console.error("Error loading products:", error);
+            }
+        }
+    
+        // Load products on page load
+        window.onload = loadProducts;
+    </script>
+    
 
 </body>
 </html>
