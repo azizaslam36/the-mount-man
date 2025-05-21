@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
         <input type="text" id="name" placeholder="Product Name" required><br>
         <input type="text" id="brand" placeholder="Brand"><br>
         <input type="number" id="price" placeholder="Price" required><br>
-        <input type="text" id="image" placeholder="Image URL" required><br>
+        <input type="file" id="image" placeholder="Image" accept="image/*" required><br>
         <button type="submit">Add Product</button>
     </form>
 
@@ -46,4 +46,100 @@
     </script>
 </body>
 </html>
+ -->
 
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Admin Dashboard</title>
+     <style>
+         .product-box {
+             border: 1px solid #ccc;
+             padding: 10px;
+             margin: 8px;
+             display: inline-block;
+         }
+     </style>
+ </head>
+ <body>
+     <h2>Welcome to Admin Panel</h2>
+     <button onclick="logout()">Logout</button>
+ 
+     <h3>Add Product</h3>
+     <form id="productForm" enctype="multipart/form-data">
+         <input type="text" name="name" placeholder="Product Name" required><br>
+         <input type="text" name="brand" placeholder="Brand"><br>
+         <input type="number" name="price" placeholder="Price" required><br>
+         <input type="file" name="image" accept="image/*" required><br>
+         <button type="submit">Add Product</button>
+     </form>
+ 
+     <h3>Available Products</h3>
+     <div id="productList"></div>
+ 
+     <script>
+         async function logout() {
+             const response = await fetch("http://127.0.0.1:5000/api/admin/logout");
+             const result = await response.json();
+             alert(result.message);
+             window.location.href = result.redirect;
+         }
+ 
+         document.getElementById("productForm").addEventListener("submit", async function(event) {
+             event.preventDefault();
+             const formData = new FormData(this);
+ 
+             const response = await fetch("http://127.0.0.1:5000/api/products/add", {
+                 method: "POST",
+                 body: formData
+             });
+ 
+             const result = await response.json();
+             alert(result.message);
+             loadProducts(); // reload product list
+         });
+ 
+         async function loadProducts() {
+             const response = await fetch("http://127.0.0.1:5000/api/products/");
+             const products = await response.json();
+ 
+             const productList = document.getElementById("productList");
+             productList.innerHTML = "";
+ 
+             products.forEach(product => {
+                 const div = document.createElement("div");
+                 div.className = "product-box";
+ 
+                 div.innerHTML = `
+                     <strong>${product.name}</strong><br>
+                     Brand: ${product.brand || "N/A"}<br>
+                     Price: ₹${product.price}<br>
+                     <img src="${product.image}" alt="${product.name}" width="100"><br>
+                     <button onclick="deleteProduct('${product.name}')">Delete</button>
+                 `;
+ 
+                 productList.appendChild(div);
+             });
+         }
+ 
+         async function deleteProduct(name) {
+             const confirmed = confirm(`Delete ${name}?`);
+             if (!confirmed) return;
+ 
+             const response = await fetch(`http://127.0.0.1:5000/api/products/delete/${name}`, {
+                 method: "DELETE"
+             });
+ 
+             const result = await response.json();
+             alert(result.message);
+             loadProducts(); // refresh list
+         }
+ 
+         loadProducts(); // initial load
+     </script>
+ </body>
+ </html>
+ 
